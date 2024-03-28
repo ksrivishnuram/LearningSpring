@@ -1,4 +1,4 @@
-package com.re5lect.sri.photos.clone;
+package com.re5lect.sri.photos.clone.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotEmpty;

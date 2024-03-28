@@ -1,5 +1,6 @@
-package com.re5lect.sri.photos.clone;
+package com.re5lect.sri.photos.clone.service;
 
+import com.re5lect.sri.photos.clone.model.Photo;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;

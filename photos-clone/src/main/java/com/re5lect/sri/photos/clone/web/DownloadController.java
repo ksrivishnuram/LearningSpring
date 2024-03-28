@@ -1,5 +1,7 @@
-package com.re5lect.sri.photos.clone;
+package com.re5lect.sri.photos.clone.web;
 
+import com.re5lect.sri.photos.clone.model.Photo;
+import com.re5lect.sri.photos.clone.service.PhotosService;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -1,6 +1,7 @@
-package com.re5lect.sri.photos.clone;
+package com.re5lect.sri.photos.clone.web;
 
-import jakarta.validation.Valid;
+import com.re5lect.sri.photos.clone.model.Photo;
+import com.re5lect.sri.photos.clone.service.PhotosService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
