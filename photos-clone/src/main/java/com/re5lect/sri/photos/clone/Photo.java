@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotEmpty;
 
 public class Photo {
+
     private String id;
 //    marking as NotEmpty that incoming json fileName should not be empty
     @NotEmpty
@@ -13,6 +14,7 @@ public class Photo {
     justIgnore does not send random alphabets to the browser when returning the data
      */
     private byte[] data;
+    private String contentType;
 
     public Photo() {
     }
@@ -43,5 +45,13 @@ public class Photo {
 
     public void setData(byte[] data) {
         this.data = data;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 }

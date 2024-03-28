@@ -1,11 +1,10 @@
 package com.re5lect.sri.photos.clone;
 
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 /*
@@ -24,8 +23,23 @@ public class DownloadController {
 
     @GetMapping("/download/{id}")
     public ResponseEntity<byte[]> download(@PathVariable String id){
-        byte[] data= new byte[0];
+        Photo photo= photosService.get(id);
+        if(photo==null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        byte[] data= photo.getData();
         HttpHeaders headers= new HttpHeaders();
+//      to set the photo in specific type inorder send back the image in jpeg/png
+        headers.setContentType(MediaType.valueOf(photo.getContentType()));
+//      browser needs fileName
+//      to download the browser automatically
+        ContentDisposition build= ContentDisposition
+                .builder("attachment")
+                .filename(photo.getFileName())
+                .build();
+        /*
+        to display image in the browser automatically
+        ContentDisposition build= ContentDisposition.builder("inline").build();
+         */
+        headers.setContentDisposition(build);
         return new ResponseEntity<>(data, headers, HttpStatus.OK);
     }
 

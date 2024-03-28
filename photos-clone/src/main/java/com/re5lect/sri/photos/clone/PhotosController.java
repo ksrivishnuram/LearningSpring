@@ -59,10 +59,13 @@ public class PhotosController {
     convert fileUpload to multipartFile, which is a springBoot file
     RequestPart("data") : marker which denotes from which part data is coming
      */
+    /*
+    the browser needs to upload the file with fileName and contentType(jpeg/png..)
+     */
     public Photo create(@RequestPart("data") MultipartFile file) throws IOException {
 
 //        setting in memory database
-        Photo photo= photosService.save(file.getOriginalFilename(), file.getBytes());
+        Photo photo= photosService.save(file.getOriginalFilename(), file.getContentType(), file.getBytes());
         return photo;
     }
 }
