@@ -1,5 +1,6 @@
 package com.re5lect.sri.photos.clone;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotEmpty;
 
 public class Photo {
@@ -7,6 +8,11 @@ public class Photo {
 //    marking as NotEmpty that incoming json fileName should not be empty
     @NotEmpty
     private String fileName;
+    @JsonIgnore
+    /*
+    justIgnore does not send random alphabets to the browser when returning the data
+     */
+    private byte[] data;
 
     public Photo() {
     }
@@ -31,5 +37,11 @@ public class Photo {
         this.fileName = fileName;
     }
 
+    public byte[] getData() {
+        return data;
+    }
 
+    public void setData(byte[] data) {
+        this.data = data;
+    }
 }
