@@ -1,5 +1,6 @@
 package com.re5lect.sri.photos.clone;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -39,5 +40,16 @@ public class PhotosController {
     public void delete(@PathVariable String id){
         Photo photo= db.remove(id);
         if(photo==null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    }
+    @PostMapping("/photos")
+    /*
+    functionality in springboot that converts json from frontend to the photo object
+    requestBody: takes the whole json and convert to object
+    valid: a checkpoint to validate if fileName is not null
+     */
+    public Photo create(@RequestBody @Valid Photo photo){
+        photo.setId(UUID.randomUUID().toString());
+        db.put(photo.getId(), photo);
+        return photo;
     }
 }

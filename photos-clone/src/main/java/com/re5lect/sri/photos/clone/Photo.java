@@ -1,7 +1,11 @@
 package com.re5lect.sri.photos.clone;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class Photo {
     private String id;
+//    marking as NotEmpty that incoming json fileName should not be empty
+    @NotEmpty
     private String fileName;
 
     public Photo() {
